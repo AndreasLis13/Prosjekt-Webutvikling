@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <div class = "header">
+        <h1>Skipta</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        {% if session['brukernavn'] %}
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/addnew">Create post</a></li>
+        <li><a href="/video">Videoes</a></li>
+        <li><a href="/picture">Pictures</a></li>
+        <li><a href="/music">Music</a></li>
+        <li style="float:right"><a href="/about">About</a></li>
+        {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/video">Videoes</a></li>
+        <li><a href="/picture">Pictures</a></li>
+        <li><a href="/music">Music</a></li>
+        <li style="float:right"><a href="/about">About</a></li>
+        {% endif %}
+    </ul>
+
+    <div class = "content">
+        <table class = "dokument">
+            {% for picture in pictures %}
+            <tr class="titledate">
+                <td class = "title">{{ picture.Tittel }}</td>
+                <td>{{ picture.Dato }}</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <img src="{{ url_for('download_file' , id=picture.id, _external=True)}}" width="30%" height="30%" />
+                </td>
+
+                <div class="delete">
+                    <td class = "delete">
+                        {% if session['brukernavn'] %}
+                        <form action="{{url_for('delete', id = picture.id)}}" method="post">
+                            <input type="hidden" name="method" values="DELETE">
+                            <input type="submit" value="Delete" class="btn btn=.danger">
+                        </form>
+                        {% endif %}
+                    </td>
+                </div>
+
+            <tr>
+                <td>{{ picture.Beskrivelse }}</td>
+            </tr>
+
+            <tr>
+                {% if session['brukernavn'] %}
+                <td>
+                    {% for comment in comments %} 
+                    {% if picture.id == comment.PostId %} 
+                    {{comment.Kommentar}} 
+                    <form action="{{url_for('deleteComment', id = comment.KommentarId)}}" method="post">
+                        <input type="hidden" name="method" values="DELETE">
+                        <input type="submit" value="Delete" class="btn btn=.danger">
+                    </form>
+                    {% endif %} 
+                    {% endfor %}
+                    <form class="input-group mb-3" method="POST" action="/comment/{{picture.id}}">
+                        <input type="text" id="kommentar" name="kommentar" class="form-control" placeholder="Comment on this post"/>
+                        <button type="submit" class="btn btn-primary">Comment</button>
+                    </form>    
+                </td>
+                {% else %}
+                <td><p>Login or register to comment</p></td>
+
+                {% endif %}
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

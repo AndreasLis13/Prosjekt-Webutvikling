@@ -1,0 +1,115 @@
+.header {
+    font-style: italic;
+    color: gray;
+    font-size: 1em;
+    margin-left: 45%;
+}
+
+.paragraph {
+  font-size:large;
+  margin-left: 38%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.about {
+  font-size: x-large;
+  margin-left: 42%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(48, 156, 199);
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  
+  li a:hover {
+    background-color: #04AA6D;
+  }
+
+  .active {
+    background-color: #04AA6D;
+  }
+.titledate {
+  float: left;
+  border-right: 10%;
+}
+
+.text {
+  font-size: large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align:justify;
+}
+
+.title {
+  font-size: large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  float:right;
+}
+
+div.create {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.content {
+  margin-left: 40%;
+  margin-top: 5%;
+}
+
+.delete {
+  margin-right: 200%;
+}
+
+.btn {
+  background-color: rgb(48, 156, 199);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.register {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20%;
+}
+
+.login {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20%;
+}
+
+.text {
+  float: inline-end;
+  font-size: large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

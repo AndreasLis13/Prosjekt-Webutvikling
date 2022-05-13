@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <form action="{{url_for('confirm', id = session['brukernavn'])}}" method="post">
+        <input type="hidden" name="method" values="Confirm">
+        <input type="submit" value="Confirm" class="button">
+    </form>
+{% endblock %}
+

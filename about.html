@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <div class = "header">
+        <h1>Skipta</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        {% if session['brukernavn'] %}
+        <li><a href="/logout">Logout</a></li>
+        <li style="float:right"><a href="/about">About</a></li>
+        {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li style="float:right"><a href="/about">About</a></li>
+        {% endif %}
+    </ul>
+    <h1 class = "about">Welcome to skipta</h1>
+    <div class="paragraph">
+        <p>Hi, this is a page started by a collage student<br>
+            My goal is to create a webpage that is easy to use<br>
+            and where people can share valuable content 
+        </p>
+    </div>
+{% endblock %}
+

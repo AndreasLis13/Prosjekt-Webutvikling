@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <div class = "header">
+        <h1>Skipta</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            {% if session['brukernavn'] %}
+            <li><a href="/logout">Logout</a></li>
+            <li style="float:right"><a href="/about">About</a></li>
+            {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <li style="float:right"><a href="/about">About</a></li>
+            {% endif %}
+        </ul>
+
+        <div class = "create">
+            <form action="{{ url_for('addnew') }}" method = "post" enctype="multipart/form-data">
+                
+                <label for="kategori">Category</label>
+                <select id = "kategori" name = "kategori">
+                    <option value= 1>Video</option>
+                    <option value= 2>Music</option>
+                    <option value= 3>Picture</option>
+                    <option value= 4>Text</option>
+                </select>
+
+                <label for="Title">Title</label>
+                <input id = "tittel" name = "tittel" type="text" placeholder="add a title" class="textbox" />
+
+                <label for="Description">Description</label>
+                <input id = "beskrivelse" name = "beskrivelse" type="text" placeholder="add a description" class="textbox" />
+
+                <label for="innlegg">File</label>
+                <input id = "innlegg" name = "innlegg" type="file" placeholder="Choose a file" class="textbox" />
+
+                <input type="submit" class="btn" value="Post"/>
+            </form>
+        </div>
+{% endblock %}
